@@ -1,0 +1,16 @@
+specVersion: 0.35.0
+name: kn-fun
+runtime: springboot
+created: 2023-08-08T19:56:12.605995-04:00
+build:
+  buildEnvs:
+  - name: BP_NATIVE_IMAGE
+    value: "false"
+  - name: BP_JVM_VERSION
+    value: "17"
+  - name: BP_MAVEN_BUILD_ARGUMENTS
+    value: -Pnative -Dmaven.test.skip=true --no-transfer-progress package
+deploy:
+  healthEndpoints:
+    liveness: /actuator/health
+    readiness: /actuator/health
